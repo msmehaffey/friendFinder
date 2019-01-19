@@ -38,21 +38,12 @@ module.exports = function(app) {
             if (diffValues[k] < value) {
                 index = k
                 value = diffValues[k]
-            }
+            };
         };
 
-        console.log(value);
-        console.log(index);
-
-        console.log("Wahooo! Your friend match is.. " + friendsData[index].userName )
-
-
-
-
-        console.log(diffValues);
-        console.log(entrantScore);
+        
         friendsData.push(req.body);
-        res.json(true);
+        res.json(friendsData[index]);
 
-    })
-}
+    });
+};
