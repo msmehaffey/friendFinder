@@ -31,7 +31,7 @@
         </form>
         <hr>
         <h3>Question 1</h3>
-        <p>This is the first Question</p>
+        <p>You think you would like to be an elected official.</p>
         <select class="form-control" id="q1">
                 <option></option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -42,7 +42,7 @@
         </select> <br><br>
 
         <h3>Question 2</h3>
-        <p>This is the second Question</p>
+        <p>You think you could run a country.</p>
         <select class="form-control" id="q2">
                 <option></option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -53,7 +53,7 @@
         </select><br><br>
 
         <h3>Question 3</h3>
-        <p>This is the third Question</p>
+        <p>You consider yourself a computer person.</p>
         <select class="form-control" id="q3">
                 <option></option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -64,7 +64,7 @@
         </select><br><br>
 
         <h3>Question 4</h3>
-        <p>This is the fourth Question</p>
+        <p>You have a lot of friends.</p>
         <select class="form-control" id="q4">
                 <option></option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -75,8 +75,63 @@
         </select><br><br>
 
         <h3>Question 5</h3>
-        <p>This is the tenth Question</p>
+        <p>You're a performer.</p>
         <select class="form-control" id="q5">
+                <option></option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+        </select><br><br>
+
+        <h3>Question 6</h3>
+        <p>You don't get stage freight.</p>
+        <select class="form-control" id="q6">
+                <option></option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+        </select><br><br>
+
+        <h3>Question 7</h3>
+        <p>You like your space.</p>
+        <select class="form-control" id="q7">
+                <option></option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+        </select><br><br>
+
+        <h3>Question 8</h3>
+        <p>You like Illinois.</p>
+        <select class="form-control" id="q8">
+                <option></option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+        </select><br><br>
+
+        <h3>Question 9</h3>
+        <p>You're well traveled.</p>
+        <select class="form-control" id="q9">
+                <option></option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+        </select><br><br>
+
+        <h3>Question 10</h3>
+        <p>You handle pressure well.</p>
+        <select class="form-control" id="q10">
                 <option></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -89,7 +144,7 @@
         <br><hr>
         <footer>
             <div class="row">
-            <p> <a href="/api/friends">API Friends List</a>  |  <a href="#">GitHub Repo</a></p>
+            <p> <a href="/api/friends">API Friends List</a>  |  <a href="https://github.com/msmehaffey/friendFinder">GitHub Repo</a></p>
             </div>
         </footer>
 
@@ -112,6 +167,11 @@
             q3Answer: $("#q3").val().trim(),
             q4Answer: $("#q4").val().trim(),
             q5Answer: $("#q5").val().trim(),
+            q6Answer: $("#q6").val().trim(),
+            q7Answer: $("#q7").val().trim(),
+            q8Answer: $("#q8").val().trim(),
+            q9Answer: $("#q9").val().trim(),
+            q10Answer: $("#q10").val().trim(),
         };
 
         console.log(newFriend);
@@ -121,27 +181,32 @@
                 result.attr("id", "result");
 
             var resultText = $("<h2>")
-                resultText.css({"text-align": "center", "font-weight": "bolder"});
+                resultText.attr("id", "resultText")
                 resultText.append("Your friend match is " + data.userName + "!!");
 
             var resultImage = $("<img>");
                 resultImage.attr("src", data.userPicture);
                 resultImage.attr("alt", data.userName);
-                resultImage.css({"width": "50%", "display": "block", "margin-left": "auto", "margin-right": "auto"});
-
+                resultImage.attr("id", "resultImage")
+        
             var homeButton = $("<a>")
                 homeButton.attr("href", "/home")
                 homeButton.attr("role", "button");
+                homeButton.attr("id", "homeButton")
                 homeButton.addClass("btn btn-primary btn-lg")
+                homeButton.html("Home")
             
 
 
             result.append(resultText);
             result.append(resultImage);
-            result.append(homeButton)
+            // var space = $("<br>");
+            // result.append(space);
+            // result.append(homeButton)
 
             if (data) {
                 $("#blahblah").html(result);
+                $("#blahblah").append(homeButton);
                
             };
 
@@ -153,6 +218,11 @@
             $("#q3").val("");
             $("#q4").val("");
             $("#q5").val("");
+            $("#q6").val("");
+            $("#q7").val("");
+            $("#q8").val("");
+            $("#q9").val("");
+            $("#q10").val("");
         });
     });
 
