@@ -15,7 +15,7 @@
 </head>
 <body>
 
-    <div class="container" id="blahblah">
+    <div class="container" id="mainContain">
        <h1> Survey Questions </h1>
        <hr>
        <h3>About You</h3>
@@ -177,7 +177,9 @@
         console.log(newFriend);
 
         $.post("/api/friends", newFriend, function(data) {
-            var result = $("<div>")
+
+            var result = $("<div>");
+                result.addClass("container");
                 result.attr("id", "result");
 
             var resultText = $("<h2>")
@@ -196,17 +198,15 @@
                 homeButton.addClass("btn btn-primary btn-lg")
                 homeButton.html("Home")
             
-
+            var pagebreak = $("<br>")
 
             result.append(resultText);
             result.append(resultImage);
-            // var space = $("<br>");
-            // result.append(space);
-            // result.append(homeButton)
 
             if (data) {
-                $("#blahblah").html(result);
-                $("#blahblah").append(homeButton);
+                $("#mainContain").html(result);
+                $("#mainContain").append(pagebreak);
+                $("#mainContain").append(homeButton)
                
             };
 
